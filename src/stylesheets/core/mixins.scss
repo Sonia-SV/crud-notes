@@ -1,0 +1,45 @@
+// MEDIA QUERIES
+
+@mixin tablet {
+  @media all and (min-width: $tablet) {
+    @content;
+  }
+}
+
+// HOVER AND ACTIVE LINKS
+
+@mixin link {
+  &:active,
+  &:hover {
+    transform: scale(1.15);
+    color: $main-color;
+    transition: color 1s, transform 1s;
+  }
+}
+
+@mixin checkboxStyle($textSize, $dividerSize, $padding) {
+  &__item {
+    display: none;
+  }
+
+  &__item + label {
+    display: inline-block;
+    cursor: pointer;
+    color: $medium-light-color;
+    font-size: $textSize;
+    &:not(:last-child):after {
+      padding: $padding;
+      font-size: $dividerSize;
+      content: '|';
+      color: $light-color;
+    }
+    &:hover,
+    &:active {
+      color: $light-color;
+    }
+  }
+
+  &__item:checked + label {
+    color: $main-color;
+  }
+}
