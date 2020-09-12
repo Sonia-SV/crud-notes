@@ -1,15 +1,17 @@
 //FONTS
-$main-font: 'Rubik', sans-serif;
+$titles-font: 'Coming Soon', cursive;
+$main-font: 'Amatic SC', cursive;
 
-//COLOR
-$main-color: #ffc400;
-$main-color-low: rgba(255, 196, 0, 0.7);
-$main-color-opacity: rgba(255, 196, 0, 0.9);
-$light-color: rgb(211, 211, 211);
-$medium-light-color: rgb(153, 153, 153);
-$medium-dark-color: #4e4e4e;
-$medium-dark-color-low: #4e4e4e50;
-$dark-color: rgb(30, 30, 30);
+//UI COLOR
+$background-color: #0588a5;
+$main-color: #e4d01d;
+$font-color: rgb(39, 38, 38);
+
+//USER COLORS
+$userColor1: #e4d01d;
+$user-color-2: #65eafc;
+$user-color-3: #f601aa;
+$user-color-4: #fe9b01;
 
 //BREAKPOINTS
 $tablet: 768px;
