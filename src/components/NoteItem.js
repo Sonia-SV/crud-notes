@@ -5,8 +5,7 @@ const NoteItem = ({ id, title, content }) => {
     <li>
       <div>
         <h2>
-          {/* #{id}  */}
-          {title}
+          #{id} {title}
         </h2>
         <p>{content}</p>
       </div>
