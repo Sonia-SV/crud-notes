@@ -6,40 +6,32 @@
   }
 }
 
-// HOVER AND ACTIVE LINKS
-
-@mixin link {
-  &:active,
-  &:hover {
-    transform: scale(1.15);
-    color: $main-color;
-    transition: color 1s, transform 1s;
-  }
+//BOX SHADOW
+@mixin box-shadow($top, $left, $blur, $color) {
+  -webkit-box-shadow: $top $left $blur $color;
+  -moz-box-shadow: $top $left $blur $color;
+  box-shadow: $top $left $blur $color;
 }
 
-@mixin checkboxStyle($textSize, $dividerSize, $padding) {
-  &__item {
-    display: none;
-  }
+@mixin transition($time, $type) {
+  -moz-transition: -moz-transform $time $type;
+  -o-transition: -o-transform $time $type;
+  -webkit-transition: -webkit-transform $time $type;
+}
 
-  &__item + label {
-    display: inline-block;
-    cursor: pointer;
-    color: $medium-light-color;
-    font-size: $textSize;
-    &:not(:last-child):after {
-      padding: $padding;
-      font-size: $dividerSize;
-      content: '|';
-      color: $light-color;
-    }
-    &:hover,
-    &:active {
-      color: $light-color;
-    }
-  }
-
-  &__item:checked + label {
-    color: $main-color;
-  }
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+// rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
 }

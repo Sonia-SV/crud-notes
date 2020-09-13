@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NotesPost from './NotesPost';
-import NotesList from './NotesList';
+import NotesPost from './header/NotesPost';
+import NotesList from './notes/NotesList';
 import './App.scss';
 
 const App = () => {

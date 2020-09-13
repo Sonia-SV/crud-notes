@@ -1,0 +1,14 @@
+@import '../../stylesheets/core/reset.scss';
+@import '../../stylesheets/core/variables.scss';
+@import '../../stylesheets/core/mixins.scss';
+
+.note__list {
+  overflow: hidden;
+  padding: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include tablet {
+    justify-content: flex-start;
+  }
+}

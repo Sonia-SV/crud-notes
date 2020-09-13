@@ -1,4 +1,5 @@
 import React from 'react';
+import './header.scss';
 
 const NotesPost = ({ handlePostNewNote, handleInputNote, newNote }) => {
   const handleInputChange = (ev) => {
@@ -22,7 +23,7 @@ const NotesPost = ({ handlePostNewNote, handleInputNote, newNote }) => {
             required
             type="text"
             placeholder="Tu título aquí"
-            maxLength="22"
+            maxLength="15"
             name="title"
             onChange={handleInputChange}
             style={{ textTransform: 'uppercase' }}
@@ -34,7 +35,7 @@ const NotesPost = ({ handlePostNewNote, handleInputNote, newNote }) => {
             cols="28"
             placeholder="Tu descripción aquí"
             name="content"
-            maxLength="100"
+            maxLength="90"
             onChange={handleInputChange}
             style={{ textTransform: 'uppercase' }}
           />
