@@ -8,6 +8,10 @@ const NoteItem = ({ id, title, content }) => {
           #{id} {title}
         </h2>
         <p>{content}</p>
+        <span>
+          <i className="fas fa-pencil-alt"></i>
+          <i className="fas fa-eraser"></i>
+        </span>
       </div>
     </li>
   );

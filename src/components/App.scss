@@ -107,6 +107,14 @@ ol li {
 ol li div {
   color: #fff;
 }
+span {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  i:hover {
+    transform: scale(1.2);
+  }
+}
 
 .form {
   color: black;
