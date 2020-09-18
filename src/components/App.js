@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NotesPost from './header/NotesPost';
 import NotesList from './notes/NotesList';
 import './App.scss';
@@ -7,6 +7,16 @@ const App = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [newNote, setNewNote] = useState({ title: '', content: '', id: 0 });
   const [newId, setNewId] = useState(1);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('notes'));
+    if (data) {
+      setAllNotes(data);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(allNotes));
+  });
 
   const handlePostNewNote = () => {
     setAllNotes((note) => note.concat(newNote));
@@ -24,11 +34,14 @@ const App = () => {
       setNewNote({ ...newNote, id: newId });
     }
   };
+  const handleDelete = (index) => {
+    setAllNotes(allNotes.filter((note, i) => i !== index));
+  };
 
   return (
     <main>
       <NotesPost handlePostNewNote={handlePostNewNote} handleInputNote={handleInputNote} newNote={newNote} />
-      <NotesList notes={allNotes} />
+      <NotesList notes={allNotes} handleDelete={handleDelete} />
     </main>
   );
 };
