@@ -5,7 +5,7 @@ import './App.scss';
 
 const App = () => {
   const [allNotes, setAllNotes] = useState([]);
-  const [newNote, setNewNote] = useState({ title: '', content: '', id: 0 });
+  const [newNote, setNewNote] = useState({ title: '', content: '', id: 0, editing: false });
   const [newId, setNewId] = useState(1);
 
   useEffect(() => {
@@ -28,12 +28,6 @@ const App = () => {
     setNewNote({ ...newNote, title: '', content: '' });
   };
 
-  const resetId = () => {
-    if (allNotes.length < 1) {
-      setNewId(1);
-    }
-  };
-
   const handleInputNote = (name, value) => {
     if (allNotes.length === 0) {
       setNewId(1);
@@ -47,10 +41,18 @@ const App = () => {
     setAllNotes(allNotes.filter((note, i) => i !== index));
   };
 
+  const handleEdit = (index) => {
+    setNewNote(allNotes[index]);
+  };
+
   return (
     <main>
       <NotesPost handlePostNewNote={handlePostNewNote} handleInputNote={handleInputNote} newNote={newNote} />
-      <NotesList notes={allNotes} handleDelete={handleDelete} />
+      {allNotes.length === 0 ? (
+        <p>Enhorabuena, has completado todas tus tareas </p>
+      ) : (
+        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} />
+      )}
     </main>
   );
 };

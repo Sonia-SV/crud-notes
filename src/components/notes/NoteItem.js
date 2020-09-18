@@ -1,9 +1,13 @@
 import React from 'react';
 import './noteItem.scss';
 
-const NoteItem = ({ id, title, content, index, handleDelete }) => {
-  const getIndexDelete = () => {
+const NoteItem = ({ id, title, content, index, handleDelete, handleEdit }) => {
+  const getIndexToDelete = () => {
     handleDelete(index);
+  };
+
+  const getIndexToEdit = () => {
+    handleEdit(index);
   };
   return (
     <li className="note__item">
@@ -15,8 +19,8 @@ const NoteItem = ({ id, title, content, index, handleDelete }) => {
           <p>{content}</p>
         </div>
         <span className="note__item__container__actions">
-          <i className="fas fa-pencil-alt"></i>
-          <i className="fas fa-eraser" index={index} onClick={getIndexDelete}></i>
+          <i className="fas fa-pencil-alt" index={index} onClick={getIndexToEdit}></i>
+          <i className="fas fa-eraser" index={index} onClick={getIndexToDelete}></i>
         </span>
       </div>
     </li>
