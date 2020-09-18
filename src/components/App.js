@@ -28,7 +28,16 @@ const App = () => {
     setNewNote({ ...newNote, title: '', content: '' });
   };
 
+  const resetId = () => {
+    if (allNotes.length < 1) {
+      setNewId(1);
+    }
+  };
+
   const handleInputNote = (name, value) => {
+    if (allNotes.length === 0) {
+      setNewId(1);
+    }
     setNewNote({ ...newNote, [name]: value });
     if (newNote.id !== newId) {
       setNewNote({ ...newNote, id: newId });
