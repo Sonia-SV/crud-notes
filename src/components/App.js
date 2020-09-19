@@ -5,8 +5,10 @@ import './App.scss';
 
 const App = () => {
   const [allNotes, setAllNotes] = useState([]);
-  const [newNote, setNewNote] = useState({ title: '', content: '', id: 0, editing: false });
+  const [newNote, setNewNote] = useState({ title: '', content: '', id: 0 });
   const [newId, setNewId] = useState(1);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingIndex, setEditingIndex] = useState('');
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('notes'));
@@ -18,10 +20,19 @@ const App = () => {
     localStorage.setItem('notes', JSON.stringify(allNotes));
   });
 
-  const handlePostNewNote = () => {
+  const handleCreateNewNote = () => {
     setAllNotes((note) => note.concat(newNote));
     setNewId(newId + 1);
     resetPostNote();
+  };
+
+  const handleUpdateNote = () => {
+    setIsEditing(false);
+    resetPostNote();
+    const updatingNote = allNotes;
+    updatingNote[editingIndex].title = newNote.title;
+    updatingNote[editingIndex].content = newNote.content;
+    setAllNotes(updatingNote);
   };
 
   const resetPostNote = () => {
@@ -43,16 +54,21 @@ const App = () => {
 
   const handleEdit = (index) => {
     setNewNote(allNotes[index]);
+    setIsEditing(true);
+    setEditingIndex(index);
   };
 
   return (
     <main>
-      <NotesPost handlePostNewNote={handlePostNewNote} handleInputNote={handleInputNote} newNote={newNote} />
-      {allNotes.length === 0 ? (
-        <p>Enhorabuena, has completado todas tus tareas </p>
-      ) : (
-        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} />
-      )}
+      <NotesPost
+        handleCreateNewNote={handleCreateNewNote}
+        handleUpdateNote={handleUpdateNote}
+        handleInputNote={handleInputNote}
+        newNote={newNote}
+        isEditing={isEditing}
+      />
+
+      <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} />
     </main>
   );
 };

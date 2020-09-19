@@ -7,6 +7,12 @@
   flex-direction: column;
   align-items: center;
   color: $font-color;
+  &__title {
+    margin: 15px;
+  }
+  &__action {
+    margin: 5px;
+  }
   &__container {
     text-transform: uppercase;
     display: flex;
