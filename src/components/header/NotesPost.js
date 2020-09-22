@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 
-const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, newNote, isEditing }) => {
+const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, newNote, isEditing, resetPostNote }) => {
   const handleInputChange = (ev) => {
     const { name, value } = ev.target;
     handleInputNote(name, value);
@@ -12,9 +12,14 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
     isEditing ? handleUpdateNote() : handleCreateNewNote();
   };
 
+  const handleResetNote = (ev) => {
+    ev.preventDefault();
+    resetPostNote();
+  };
+
   return (
     <header>
-      <form onSubmit={handlePostNote} className="form">
+      <form onSubmit={handlePostNote} onReset={handleResetNote} className="form">
         <h1 className="form__title">Tu lista de post-Its</h1>
         <h2 className="form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
         <div className="form__container">
@@ -41,7 +46,10 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
             style={{ textTransform: 'uppercase' }}
           />
         </div>
-        <button type="submit">{isEditing ? 'Actualizar' : 'Publicar'}</button>
+        <div className="form__buttons">
+          <button type="reset">{isEditing ? 'Descartar cambios' : 'Descartar nota'}</button>
+          <button type="submit">{isEditing ? 'Actualizar nota' : 'Publicar nota'}</button>
+        </div>
       </form>
     </header>
   );
