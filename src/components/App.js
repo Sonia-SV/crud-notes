@@ -67,6 +67,7 @@ const App = () => {
         handleInputNote={handleInputNote}
         newNote={newNote}
         isEditing={isEditing}
+        resetPostNote={resetPostNote}
       />
 
       <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} />
