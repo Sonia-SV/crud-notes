@@ -21,3 +21,18 @@ body {
 .main {
   display: flex;
 }
+
+.footer {
+  width: 100%;
+  background-color: $font-color;
+  font-family: $header-font;
+  color: $light-color;
+  font-size: 12px;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+
+  a {
+    text-decoration: underline;
+  }
+}

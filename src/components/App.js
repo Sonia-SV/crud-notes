@@ -77,6 +77,11 @@ const App = () => {
 
         <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} newNote={newNote} />
       </main>
+      <footer className="footer">
+        <p>
+          A CRUD project by <a href="https://sonia-sv.github.io/portfolio/#/">Sonia Sanz Vivas</a>
+        </p>
+      </footer>
     </>
   );
 };

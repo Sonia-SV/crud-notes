@@ -3,13 +3,14 @@
 @import '../../stylesheets/core/mixins.scss';
 .form {
   background-color: $aside-color;
-  height: 100vh;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: $font-color;
   padding: 2em;
+  height: 100%;
+  min-height: 100vh;
   &__action {
     margin: 5px;
   }
