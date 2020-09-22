@@ -2,7 +2,8 @@ import React from 'react';
 import NoteItem from './NoteItem';
 import './noteList.scss';
 
-const NotesList = ({ notes, handleDelete, handleEdit }) => {
+const NotesList = ({ notes, handleDelete, handleEdit, newNote }) => {
+  console.log(newNote.title.length !== 0);
   const singleNote = notes.map((note, index) => {
     return (
       <NoteItem
@@ -13,6 +14,7 @@ const NotesList = ({ notes, handleDelete, handleEdit }) => {
         handleDelete={handleDelete}
         handleEdit={handleEdit}
         index={index}
+        newNote={newNote}
       />
     );
   });

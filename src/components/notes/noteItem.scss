@@ -34,10 +34,14 @@
       width: 100%;
       display: flex;
       justify-content: space-evenly;
-      i:hover {
-        @include scale(1.2);
-      }
     }
+  }
+}
+
+.active {
+  @include transition(0.3s, linear);
+  opacity: 100%;
+  .note__item__container {
     &:hover,
     &:focus {
       @include box-shadow(10px, 10px, 7px, rgba(0, 0, 0, 0.7));
@@ -45,23 +49,15 @@
       position: relative;
       z-index: 5;
     }
+    &__actions {
+      cursor: pointer;
+      i:hover {
+        @include scale(1.2);
+      }
+    }
   }
 }
-
-// ul li:nth-child(even) a {
-//   @include rotate(4);
-//   position: relative;
-//   top: 5px;
-//   background: #cfc;
-// }
-// ul li:nth-child(3n) a {
-//   @include rotate(-3);
-//   position: relative;
-//   top: -5px;
-//   background: #ccf;
-// }
-// ul li:nth-child(5n) a {
-//   @include rotate(5);
-//   position: relative;
-//   top: -10px;
-// }
+.unactive {
+  @include transition(0.3s, linear);
+  opacity: 70%;
+}

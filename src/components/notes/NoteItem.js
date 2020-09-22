@@ -1,7 +1,7 @@
 import React from 'react';
 import './noteItem.scss';
 
-const NoteItem = ({ id, title, content, index, handleDelete, handleEdit }) => {
+const NoteItem = ({ id, title, content, index, handleDelete, handleEdit, newNote }) => {
   const getIndexToDelete = () => {
     handleDelete(index);
   };
@@ -10,7 +10,7 @@ const NoteItem = ({ id, title, content, index, handleDelete, handleEdit }) => {
     handleEdit(index);
   };
   return (
-    <li className="note__item">
+    <li className={`note__item ${newNote.title.length !== 0 || newNote.content.length !== 0 ? 'unactive' : 'active'}`}>
       <div className="note__item__container">
         <div className="note__item__container__text">
           <h2>

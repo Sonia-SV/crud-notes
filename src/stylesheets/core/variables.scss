@@ -1,13 +1,15 @@
 //FONTS
+$header-font: 'Arvo', serif;
 $titles-font: 'Coming Soon', cursive;
 $main-font: 'Amatic SC', cursive;
 
 //UI COLOR
-$background-color: #0588a5;
-$main-color: #e4d01d;
+$background-color: #f0f0f0;
+$aside-color: #dadada;
+$main-color: #f7e22c;
+$light-color: white;
 $font-color: rgb(39, 38, 38);
-$font-color-secondary: white;
-$font-color-tertiary: rgba(255, 255, 255, 0.596);
+$font-color-secondary: rgba(255, 255, 255, 0.596);
 
 //BREAKPOINTS
 $tablet: 768px;

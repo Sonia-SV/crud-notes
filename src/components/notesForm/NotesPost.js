@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.scss';
+import './notesPost.scss';
 
 const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, newNote, isEditing, resetPostNote }) => {
   const handleInputChange = (ev) => {
@@ -18,9 +18,8 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
   };
 
   return (
-    <header>
+    <section>
       <form onSubmit={handlePostNote} onReset={handleResetNote} className="form">
-        <h1 className="form__title">Tu lista de post-Its</h1>
         <h2 className="form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
         <div className="form__container">
           <label htmlFor="title">Título:</label>
@@ -51,7 +50,7 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
           <button type="submit">{isEditing ? 'Actualizar nota' : 'Publicar nota'}</button>
         </div>
       </form>
-    </header>
+    </section>
   );
 };
 

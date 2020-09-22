@@ -5,7 +5,19 @@
 body {
   overflow-wrap: break-word;
   font-family: 'Coming Soon', cursive;
-  margin: 1em;
   background: $background-color;
-  color: #fff;
+  color: $font-color;
+}
+.header {
+  @include box-shadow(1px, 1px, 7px, $font-color);
+  &__title {
+    padding: 15px;
+    font-family: $header-font;
+    text-decoration: underline;
+    text-align: center;
+  }
+}
+
+.main {
+  display: flex;
 }

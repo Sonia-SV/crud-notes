@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NotesPost from './header/NotesPost';
+import NotesPost from './notesForm/NotesPost';
 import NotesList from './notes/NotesList';
 import './App.scss';
 
@@ -38,6 +38,7 @@ const App = () => {
 
   const resetPostNote = () => {
     setNewNote({ ...newNote, title: '', content: '' });
+    setIsEditing(false);
   };
 
   const handleInputNote = (name, value) => {
@@ -60,18 +61,23 @@ const App = () => {
   };
 
   return (
-    <main>
-      <NotesPost
-        handleCreateNewNote={handleCreateNewNote}
-        handleUpdateNote={handleUpdateNote}
-        handleInputNote={handleInputNote}
-        newNote={newNote}
-        isEditing={isEditing}
-        resetPostNote={resetPostNote}
-      />
+    <>
+      <header className="header">
+        <h1 className="header__title">Tu lista de post-Its</h1>
+      </header>
+      <main className="main">
+        <NotesPost
+          handleCreateNewNote={handleCreateNewNote}
+          handleUpdateNote={handleUpdateNote}
+          handleInputNote={handleInputNote}
+          newNote={newNote}
+          isEditing={isEditing}
+          resetPostNote={resetPostNote}
+        />
 
-      <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} />
-    </main>
+        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} newNote={newNote} />
+      </main>
+    </>
   );
 };
 
