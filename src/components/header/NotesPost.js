@@ -12,9 +12,14 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
     isEditing ? handleUpdateNote() : handleCreateNewNote();
   };
 
+  const handleResetNote = (ev) => {
+    ev.preventDefault();
+    console.log(ev.target);
+  };
+
   return (
     <header>
-      <form onSubmit={handlePostNote} className="form">
+      <form onSubmit={handlePostNote} onReset={handleResetNote} className="form">
         <h1 className="form__title">Tu lista de post-Its</h1>
         <h2 className="form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
         <div className="form__container">
@@ -41,7 +46,10 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
             style={{ textTransform: 'uppercase' }}
           />
         </div>
-        <button type="submit">{isEditing ? 'Actualizar' : 'Publicar'}</button>
+        <div>
+          <button type="reset">Descartar</button>
+          <button type="submit">{isEditing ? 'Actualizar' : 'Publicar'}</button>
+        </div>
       </form>
     </header>
   );

@@ -13,11 +13,12 @@ const App = () => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('notes'));
     if (data) {
-      setAllNotes(data);
+      setAllNotes(data.allNotes);
+      setNewId(data.newId);
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(allNotes));
+    localStorage.setItem('notes', JSON.stringify({ allNotes, newId }));
   });
 
   const handleCreateNewNote = () => {
