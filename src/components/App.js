@@ -79,7 +79,10 @@ const App = () => {
       </main>
       <footer className="footer">
         <p>
-          A CRUD project by <a href="https://sonia-sv.github.io/portfolio/#/">Sonia Sanz Vivas</a>
+          A CRUD project by{' '}
+          <a href="https://sonia-sv.github.io/portfolio/#/" target="_blank" rel="noopener noreferrer">
+            Sonia Sanz Vivas
+          </a>
         </p>
       </footer>
     </>
