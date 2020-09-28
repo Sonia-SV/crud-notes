@@ -36,8 +36,8 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
           />
         </div>
         <div className="form__buttons">
-          <button type="reset">{isEditing ? 'Descartar cambios' : 'Descartar nota'}</button>
           <button type="submit">{isEditing ? 'Actualizar nota' : 'Publicar nota'}</button>
+          <button type="reset">{isEditing ? 'Descartar cambios' : 'Descartar nota'}</button>
         </div>
       </form>
     </section>

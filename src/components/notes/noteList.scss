@@ -15,7 +15,7 @@
     }
   }
   &__button {
-    @include buttons($font-color-secondary, $background-color, 200px);
+    @include buttons($font-color-secondary, $background-color, 170px);
     display: flex;
     justify-content: center;
     margin-top: 20px;
