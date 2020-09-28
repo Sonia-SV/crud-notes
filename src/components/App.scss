@@ -7,31 +7,38 @@ body {
   font-family: 'Coming Soon', cursive;
   background: $background-color;
   color: $font-color;
+  font-family: $header-font;
 }
 .header {
-  @include box-shadow(1px, 1px, 7px, $font-color);
+  background-color: $aside-color;
+  z-index: 2;
   &__title {
     padding: 15px;
-    font-family: $header-font;
     text-decoration: underline;
     text-align: center;
+  }
+  @include tablet {
+    border-bottom: solid 2px $background-color;
   }
 }
 
 .main {
   display: flex;
+  flex-direction: column;
+  @include tablet {
+    flex-direction: row;
+  }
 }
 
 .footer {
   width: 100%;
-  background-color: $font-color;
+  background-color: $button-color;
   font-family: $header-font;
   color: $light-color;
   font-size: 12px;
   padding: 15px;
   position: fixed;
   bottom: 0;
-
   a {
     text-decoration: underline;
   }

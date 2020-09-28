@@ -2,6 +2,7 @@
 @import '../../stylesheets/core/variables.scss';
 @import '../../stylesheets/core/mixins.scss';
 .form {
+  z-index: 0;
   background-color: $aside-color;
   color: black;
   display: flex;
@@ -9,16 +10,13 @@
   align-items: center;
   color: $font-color;
   padding: 2em;
-  height: 100%;
-  min-height: 100vh;
   &__action {
     margin: 5px;
   }
   &__container {
-    text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    background: $light-color;
+    background: $background-color;
     height: 13em;
     width: 13em;
     padding: 1em;
@@ -29,40 +27,32 @@
       background-color: transparent;
       border: none;
       padding-bottom: 0.3em;
-      input {
-        font-family: $titles-font;
-      }
-      textarea {
-        font-family: $main-font;
+      color: $font-color-secondary;
+      font-family: $main-font;
+      &::placeholder {
+        opacity: 0.4;
       }
     }
     input {
       overflow-wrap: break-word;
     }
-    label {
-      font-family: $main-font;
-      text-transform: uppercase;
-      color: grey;
-      &:first-child {
-        font-family: $titles-font;
-      }
-    }
   }
   &__buttons {
     display: flex;
-    button {
-      width: 90px;
-      height: 50px;
-      background-color: $font-color;
-      @include box-shadow(2px, 2px, 6px, rgba(192, 191, 191, 0.7));
-      border-radius: 5px;
-      color: $light-color;
-      padding: 5px;
-      margin: 1em 0.5em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    flex-direction: column;
+    @include buttons($button-color, $light-color, 150px);
+  }
+
+  @include tablet {
+    height: 100%;
+    min-height: 100vh;
+    &__buttons {
+      flex-direction: row;
+      button {
+        width: 90px;
+        height: 50px;
+        margin: 1em 0.5em;
+      }
     }
   }
 }

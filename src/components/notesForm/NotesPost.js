@@ -23,16 +23,7 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
         <h2 className="form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
         <div className="form__container">
           <label htmlFor="title">Título:</label>
-          <input
-            value={newNote.title}
-            required
-            type="text"
-            placeholder="Tu título aquí"
-            maxLength="15"
-            name="title"
-            onChange={handleInputChange}
-            style={{ textTransform: 'uppercase' }}
-          />
+          <input value={newNote.title} required type="text" placeholder="Tu título aquí" maxLength="15" name="title" onChange={handleInputChange} />
           <label htmlFor="content">Contenido:</label>
           <textarea
             value={newNote.content}
@@ -42,7 +33,6 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
             name="content"
             maxLength="90"
             onChange={handleInputChange}
-            style={{ textTransform: 'uppercase' }}
           />
         </div>
         <div className="form__buttons">

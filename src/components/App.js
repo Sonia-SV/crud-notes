@@ -41,6 +41,11 @@ const App = () => {
     setIsEditing(false);
   };
 
+  const deleteAllNotes = () => {
+    setAllNotes([]);
+    setNewId(1);
+  };
+
   const handleInputNote = (name, value) => {
     if (allNotes.length === 0) {
       setNewId(1);
@@ -75,7 +80,7 @@ const App = () => {
           resetPostNote={resetPostNote}
         />
 
-        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} newNote={newNote} />
+        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} newNote={newNote} deleteAllNotes={deleteAllNotes} />
       </main>
       <footer className="footer">
         <p>
