@@ -16,6 +16,7 @@ const App = () => {
     { name: 'urgente', color: '#ff950a' },
   ]);
 
+  //get from local storage
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('notes'));
     if (data) {
@@ -23,16 +24,20 @@ const App = () => {
       setNewId(data.newId);
     }
   }, []);
+
+  //set local storage
   useEffect(() => {
     localStorage.setItem('notes', JSON.stringify({ allNotes, newId }));
   });
 
+  //add new note to AllNotes array
   const handleCreateNewNote = () => {
     setAllNotes((note) => note.concat(newNote));
     setNewId(newId + 1);
     resetPostNote();
   };
 
+  //update existing note
   const handleUpdateNote = () => {
     setIsEditing(false);
     resetPostNote();
@@ -43,15 +48,19 @@ const App = () => {
     setAllNotes(updatingNote);
   };
 
+  //reset notes form
   const resetPostNote = () => {
     setNewNote({ ...newNote, title: '', content: '', theme: 'general' });
     setIsEditing(false);
   };
 
+  //delete all notes from allNotes array
   const deleteAllNotes = () => {
     setAllNotes([]);
     setNewId(1);
   };
+
+  //set id to currnent note
   const handleInputNote = (name, value) => {
     if (allNotes.length === 0) {
       setNewId(1);
@@ -61,10 +70,13 @@ const App = () => {
       setNewNote({ ...newNote, id: newId });
     }
   };
+
+  //delete existing note
   const handleDelete = (index) => {
     setAllNotes(allNotes.filter((note, i) => i !== index));
   };
 
+  //edit existing note
   const handleEdit = (index) => {
     setNewNote(allNotes[index]);
     setIsEditing(true);
