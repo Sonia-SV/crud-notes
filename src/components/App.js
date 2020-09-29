@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import NotesPost from './notesForm/NotesPost';
+import Aside from './menu/Aside';
 import NotesList from './notes/NotesList';
 import './App.scss';
 
 const App = () => {
   const [allNotes, setAllNotes] = useState([]);
-  const [newNote, setNewNote] = useState({ title: '', content: '', id: 0 });
+  const [newNote, setNewNote] = useState({ title: '', content: '', theme: 'general', id: 0 });
   const [newId, setNewId] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [editingIndex, setEditingIndex] = useState('');
+  const [allThemes, setAllThemes] = useState([
+    { name: 'general', color: '#f8d613' },
+    { name: 'trabajo', color: '#65eafc' },
+    { name: 'personal', color: '#f601aa' },
+    { name: 'urgente', color: '#ff950a' },
+  ]);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('notes'));
@@ -33,11 +39,12 @@ const App = () => {
     const updatingNote = allNotes;
     updatingNote[editingIndex].title = newNote.title;
     updatingNote[editingIndex].content = newNote.content;
+    updatingNote[editingIndex].theme = newNote.theme;
     setAllNotes(updatingNote);
   };
 
   const resetPostNote = () => {
-    setNewNote({ ...newNote, title: '', content: '' });
+    setNewNote({ ...newNote, title: '', content: '', theme: 'general' });
     setIsEditing(false);
   };
 
@@ -45,7 +52,6 @@ const App = () => {
     setAllNotes([]);
     setNewId(1);
   };
-
   const handleInputNote = (name, value) => {
     if (allNotes.length === 0) {
       setNewId(1);
@@ -65,22 +71,37 @@ const App = () => {
     setEditingIndex(index);
   };
 
+  const handleUserColors = (ev) => {
+    // const newColors = colors;
+    // newColors[ev.target.name] = ev.target.value;
+    // setColors(newColors);
+  };
+
   return (
     <>
       <header className="header">
         <h1 className="header__title">Tu lista de post-Its</h1>
       </header>
       <main className="main">
-        <NotesPost
+        <Aside
           handleCreateNewNote={handleCreateNewNote}
           handleUpdateNote={handleUpdateNote}
           handleInputNote={handleInputNote}
           newNote={newNote}
           isEditing={isEditing}
           resetPostNote={resetPostNote}
+          handleUserColors={handleUserColors}
+          allThemes={allThemes}
         />
 
-        <NotesList notes={allNotes} handleDelete={handleDelete} handleEdit={handleEdit} newNote={newNote} deleteAllNotes={deleteAllNotes} />
+        <NotesList
+          notes={allNotes}
+          handleDelete={handleDelete}
+          handleEdit={handleEdit}
+          newNote={newNote}
+          deleteAllNotes={deleteAllNotes}
+          allThemes={allThemes}
+        />
       </main>
       <footer className="footer">
         <p>

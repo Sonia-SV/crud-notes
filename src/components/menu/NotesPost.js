@@ -1,11 +1,18 @@
 import React from 'react';
-import './notesPost.scss';
 
-const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, newNote, isEditing, resetPostNote }) => {
+const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, newNote, isEditing, resetPostNote, allThemes }) => {
   const handleInputChange = (ev) => {
     const { name, value } = ev.target;
     handleInputNote(name, value);
   };
+
+  const themesSelect = allThemes.map((theme, index) => {
+    return (
+      <option key={index} value={theme.name}>
+        #{theme.name}
+      </option>
+    );
+  });
 
   const handlePostNote = (ev) => {
     ev.preventDefault();
@@ -19,9 +26,9 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
 
   return (
     <section>
-      <form onSubmit={handlePostNote} onReset={handleResetNote} className="form">
-        <h2 className="form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
-        <div className="form__container">
+      <form onSubmit={handlePostNote} onReset={handleResetNote} className="aside__form">
+        <h2 className="aside__form__action">{isEditing ? 'Edita tu nota:' : 'Crea tu nota:'}</h2>
+        <div className="aside__form__container">
           <label htmlFor="title">Título:</label>
           <input value={newNote.title} required type="text" placeholder="Tu título aquí" maxLength="15" name="title" onChange={handleInputChange} />
           <label htmlFor="content">Contenido:</label>
@@ -34,8 +41,12 @@ const NotesPost = ({ handleCreateNewNote, handleUpdateNote, handleInputNote, new
             maxLength="90"
             onChange={handleInputChange}
           />
+          <label htmlFor="theme">Categoría:</label>
+          <select name="theme" onChange={handleInputChange} value={newNote.theme}>
+            {themesSelect}
+          </select>
         </div>
-        <div className="form__buttons">
+        <div className="aside__form__buttons">
           <button type="submit">{isEditing ? 'Actualizar nota' : 'Publicar nota'}</button>
           <button type="reset">{isEditing ? 'Descartar cambios' : 'Descartar nota'}</button>
         </div>

@@ -10,7 +10,6 @@ body {
   font-family: $header-font;
 }
 .header {
-  background-color: $aside-color;
   z-index: 2;
   &__title {
     padding: 15px;
@@ -18,7 +17,7 @@ body {
     text-align: center;
   }
   @include tablet {
-    border-bottom: solid 2px $background-color;
+    border-bottom: solid 2px $board-color;
   }
 }
 
