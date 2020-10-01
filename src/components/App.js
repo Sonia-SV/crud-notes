@@ -65,9 +65,11 @@ const App = () => {
     if (allNotes.length === 0) {
       setNewId(1);
     }
-    setNewNote({ ...newNote, [name]: value });
+
     if (newNote.id !== newId) {
-      setNewNote({ ...newNote, id: newId });
+      setNewNote({ ...newNote, id: newId, [name]: value });
+    } else {
+      setNewNote({ ...newNote, [name]: value });
     }
   };
 
